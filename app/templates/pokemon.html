@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<br />
+<h1>This page shows all available Pokemon.</h1>
+<br />
+<div class="d-flex flex-row">
+  {% for pokemon in object_list %}
+  <div class="card" style="width: 18rem;">
+    <a href="{% url 'pokemon_profile' pokemon.pk %}">
+      <img src="{{pokemon.pokemon_pic.url}}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemon.name }}</h5>
+        <p class="card-text">{{ pokemon.num }}</p>
+      </div>
+    </a>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!-- <h1>{{ pokemon.name }}</h1>
+
+<hr>
+<br>
+{{ pokemon.description }} -->
+
+<br />
+<h1>This is the Pokemon Profile page.</h1>
+<hr />
+
+<img class="profile-pic" src="{{pokemon.pokemon_pic.url}}" />
+
+<hr />
+
+<h3>Available Pokemon:</h3>
+
+{{pokemon.num}}
+<table class="table table-striped">
+  <tr>
+    <th scope="col">Name</th>
+  </tr>
+  <tr>
+    <td>{{ pokemon.name }}</td>
+  </tr>
+</table>
+
+{{ pokemon.description }} {% endblock content %}

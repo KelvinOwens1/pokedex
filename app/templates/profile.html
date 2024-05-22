@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<br />
+<h1>This profile page belongs to {{ request.user.trainer.name }}.</h1>
+<hr />
+<div class="profile_container">
+  <div class="profile_pic">
+    <img class="profile-pic" src="{{request.user.trainer.profile_pic.url}}" />
+    <hr />
+  </div>
+
+  <div class="profile_plist">
+    <h3>Available Pokemon in {{ request.user }} Pokedex:</h3>
+    <table class="table table-striped">
+      <tr>
+        <th scope="col">Name</th>
+      </tr>
+      {% for i in trainer2 %}
+      <tr>
+        <td>{{ i.pokedex }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

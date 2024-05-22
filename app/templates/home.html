@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<br />
+<div class="container-fluid d-flex justify-content-center">
+  <div class="row w-25 p-3">
+    <div class="col-md">
+      <div class="card text-center">
+        <h5 class="card-title">Total Trainers</h5>
+      </div>
+      <div class="card-body text-center">
+        <h3 class="card-title">{{ total_trainers }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row w-25 p-3">
+    <div class="col-md">
+      <div class="card text-center">
+        <h5 class="card-title">Total Pokemon</h5>
+      </div>
+      <div class="card-body text-center">
+        <h3 class="card-title">{{ total_pokemon }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="text-center">
+<h1>This is the Home page.</h1>
+</div>
+
+<br />
+<div class="d-flex flex-column text-center">
+<h2>Meet a pokemon:</h2>
+Placeholder for random pokemon
+</div>
+<br />
+<div class="d-flex justify-content-center fmb-2">
+<img src="{% static "images/001.png" %}" alt="001 Bulbasaur">
+<br />
+</div>
+
+<div class="d-flex flex-column"></div>
+<!-- {% for user in users %}
+<li>{{ user.username }}</li>
+{% endfor %} -->
+<div>
+<h3 class="text-center">Available Trainers:</h3>
+</div>
+<div class="d-flex justify-content-center w-25">
+  <table class="table table-striped text-center">
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+    {% for i in trainers %}
+    <tr>
+      <td>{{ i.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</div>
+{% endblock content %}
