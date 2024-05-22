@@ -1,16 +1,21 @@
 {% extends "base.html" %} {% block content %}
 <br />
-<h1>This profile page belongs to {{ request.user.trainer.name }}.</h1>
+<h1 class="text-center">This profile page belongs to {{ request.user.trainer.name }}.</h1>
 <hr />
-<div class="profile_container">
-  <div class="profile_pic">
-    <img class="profile-pic" src="{{request.user.trainer.profile_pic.url}}" />
-    <hr />
+<div class="container-fluid d-flex flex-row justify-content-around w-75">
+
+
+  <div class="card bg-dark disabled" style="width: 18rem;">
+      <img src="{{request.user.trainer.profile_pic.url}}" class="card-img-top" />
+      <div class="card-body d-grid gap-2">
+        <hr class="text-bg-dark">
+        <a href="{%url 'account'%}" class="btn btn-warning text-decoration-none"><i class="bi bi-pencil-square"></i> Edit Profile</a>
+      </div>
   </div>
 
-  <div class="profile_plist">
+  <div class="profile_plist text-center">
     <h3>Available Pokemon in {{ request.user }} Pokedex:</h3>
-    <table class="table table-striped">
+    <table class="table table-striped" data-bs-theme="dark">
       <tr>
         <th scope="col">Name</th>
       </tr>
@@ -21,6 +26,6 @@
       {% endfor %}
     </table>
   </div>
-</div>
 
+</div>
 {% endblock content %}

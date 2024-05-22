@@ -1,18 +1,26 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<br />
-<h1>This page shows all available Pokemon.</h1>
-<br />
-<div class="d-flex flex-row">
-  {% for pokemon in object_list %}
-  <div class="card" style="width: 18rem;">
-    <a href="{% url 'pokemon_profile' pokemon.pk %}">
-      <img src="{{pokemon.pokemon_pic.url}}" class="card-img-top" />
-      <div class="card-body">
-        <h5 class="card-title">{{ pokemon.name }}</h5>
-        <p class="card-text">{{ pokemon.num }}</p>
-      </div>
-    </a>
+<div class="container-fluid d-flex flex-column text-center w-75">
+
+  <br>
+
+  <h1>This page shows all available Pokemon.</h1>
+  <a href="{% url 'add_pokemon' %}" class="btn btn-dark w-25">Add Pokemon</a>
+  
+  <hr class="text-bg-light">
+  
+  <div class="d-flex justify-content-center">
+    {% for pokemon in object_list %}
+    <div class="card" data-bs-theme="dark" style="width: 18rem;">
+      <a href="{% url 'pokemon_profile' pokemon.pk %}">
+        <img src="{{pokemon.pokemon_pic.url}}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pokemon.name }}</h5>
+          <p class="card-text">{{ pokemon.num }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
   </div>
 </div>
-{% endfor %}
+
 {% endblock content %}

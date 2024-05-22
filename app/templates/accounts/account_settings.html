@@ -12,23 +12,23 @@
 <br />
 <div class="row">
   <div class="col-md-3">
-    <div class="card card-body">
+    <div class="card card-body" data-bs-theme="dark">
       <a class="btn btn-warning" href="{% url 'profile' %}">
-        &#8592; Back to Profile</a
+        <i class="bi bi-arrow-left-square"></i> Back to Profile</a
       >
-      <hr />
-      <h3 style="text-align: center">Account Settings</h3>
-      <hr />
+      <hr class="text-bg-dark">
+      <h3 class="text-center text-bg-dark">Account Settings</h3>
+      <hr class="text-bg-dark">
       <img class="profile-pic" src="{{request.user.trainer.profile_pic.url}}" />
     </div>
   </div>
   <div class="col-md-9">
-    <div class="card card-body">
+    <div class="card card-body text-bg-dark" data-bs-theme="dark">
       <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %} {{form.as_p}}
 
         <input
-          class="btn btn-primary"
+          class="btn btn-warning"
           type="submit"
           name="Update Information"
         />

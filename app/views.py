@@ -4,13 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from django.contrib import messages
 
 from .models import *
 from .forms import CreateUserForm, Trainer_form
 from .decorators import unauthenticated_user, allowed_users, admin_only
+import random
 
 
 class PokemonList(ListView):
@@ -23,6 +24,13 @@ class PokemonProfile(DetailView):
     template_name = 'pokemon_profile.html'
 
 
+class AddPokemon(CreateView):
+    model = Pokemon
+    template_name = "add_pokemon.html"
+    fields = "__all__"
+
+
+
 def home_view(request):
     
     trainers = Trainer.objects.all()
@@ -32,9 +40,18 @@ def home_view(request):
 
     total_pokemon = pokemon_list.count()
 
-    context = {"trainers": trainers, "total_trainers": total_trainers, "total_pokemon": total_pokemon}
+    context = {"trainers": trainers, "total_trainers": total_trainers, "total_pokemon": total_pokemon,}
 
     return render(request, "home.html", context)
+
+
+def random_pokemon_view(request):
+    pk_list = list(Pokemon.objects.values_list('id', flat=True))
+    if pk_list:
+        random_pk = random.choice(pk_list)
+        return redirect('pokemon_profile', pk=random_pk)
+    else:
+        return redirect('home')
 
 
 @unauthenticated_user
