@@ -17,3 +17,18 @@ class Trainer_form(ModelForm):
         model = Trainer
         fields = "__all__"
         exclude = ["user"]
+
+
+class PokemonForm(ModelForm):
+    class Meta:
+        model = Pokemon
+        fields = ('num', 'name', 'pokemon_type', 'description', 'evolutions', 'pokemon_pic')
+
+        widgets = {
+            'num' : forms.TextInput(attrs={'class': 'form-control'}), 
+            'name' : forms.TextInput(attrs={'class': 'form-control'}), 
+            'pokemon_type' : forms.SelectMultiple(attrs={'class': 'form-control'}), 
+            'description' : forms.Textarea(attrs={'class': 'form-control'}), 
+            'evolutions' : forms.Textarea(attrs={'class': 'form-control'}), 
+            'pokemon_pic' : forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }

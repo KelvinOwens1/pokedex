@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<h1>Delete pokemon</h1>
+
+<h3>Delete: {{ pokemon.name }}</h3>
+
+<div class="form_control d-flex justify-content-center" data-bs-theme="dark">
+  <form method="POST">
+    {% csrf_token %}
+    <br />
+    <br />
+    <strong>Are you sure you want to delete {{ pokemon.name }}</strong>
+    <br />
+    <br />
+    <button>Delete Pokemon</button>
+  </form>
+</div>
+
+{% endblock content %}

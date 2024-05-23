@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
     
 
-class Pokemon_types(models.Model):
+class Pokemon_type(models.Model):
     pokemon_types = models.CharField(max_length=50, null=True)
     
     def __str__(self):
@@ -10,13 +10,13 @@ class Pokemon_types(models.Model):
     
 
 class Pokemon(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    # user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     num = models.CharField(max_length=4)
     name = models.CharField(max_length=50)
-    pokemon_types = models.ManyToManyField(Pokemon_types, related_name="type", related_query_name="types", null=True)
+    pokemon_type = models.ManyToManyField(Pokemon_type, related_name="type", related_query_name="types", null=True)
     description = models.TextField(null=True)
     evolutions = models.TextField(null=True)
-    pokemon_pic = models.ImageField(default=None, null=True, blank=True)
+    pokemon_pic = models.ImageField(default="pokeball.png", null=True, blank=True)
 
     def __str__(self):
         return self.name

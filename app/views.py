@@ -4,19 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from django.contrib import messages
 
 from .models import *
-from .forms import CreateUserForm, Trainer_form
+from .forms import CreateUserForm, Trainer_form, PokemonForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
+from django.urls import reverse_lazy
 import random
 
 
 class PokemonList(ListView):
     model = Pokemon
     template_name = 'pokemon.html'
+    ordering = ['id']
 
 
 class PokemonProfile(DetailView):
@@ -24,10 +26,27 @@ class PokemonProfile(DetailView):
     template_name = 'pokemon_profile.html'
 
 
+# @login_required(login_url='login')
+# @allowed_users(allowed_roles='admin')
 class AddPokemon(CreateView):
     model = Pokemon
+    form_class = PokemonForm
     template_name = "add_pokemon.html"
-    fields = "__all__"
+    # fields = ("num", "name")
+    success_url = reverse_lazy('pokemon')
+
+
+class UpdatePokemon(UpdateView):
+    model = Pokemon
+    form_class = PokemonForm
+    template_name = "add_pokemon.html"
+    success_url = reverse_lazy('pokemon')
+
+
+class DeletePokemon(DeleteView):
+    model = Pokemon
+    template_name = "delete_pokemon.html"
+    success_url = reverse_lazy('pokemon')    
 
 
 

@@ -1,14 +1,17 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <div class="container-fluid d-flex flex-column">
-
   <div class="text-center">
     <br />
     <h1>{{ pokemon.name }}</h1>
+    <a href="{% url 'update_pokemon' pokemon.pk %}" class="btn btn-warning"
+      >Edit Pokemon</a
+    >
+    <a href="{% url 'delete_pokemon' pokemon.pk %}" class="btn btn-warning"
+      >Delete Pokemon</a
+    >
     <hr />
   </div>
-
-  
 
   <div class="d-inline-flex flex-column text-center">
     <div>
@@ -18,9 +21,9 @@
     <hr />
 
     <h3>Available Pokemon:</h3>
-    <br>
+    <br />
     <div class="d-flex justify-content-evenly">
-      <br>
+      <br />
       <table class="table table-striped w-25 text-center" data-bs-theme="dark">
         <tr>
           <th>Number</th>
@@ -32,9 +35,7 @@
         </tr>
       </table>
 
-      <div class="w-25 text-bg-dark">
-        {{ pokemon.description }} 
-      </div>
+      <div class="w-25 text-bg-dark">{{ pokemon.description }}</div>
     </div>
   </div>
 </div>

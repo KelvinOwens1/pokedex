@@ -1,11 +1,12 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<h1 class="text-center">Add pokemon</h1>
+<h1>Update pokemon</h1>
 
-<div class="form-control d-flex justify-content-center" data-bs-theme="dark">
+<div class="form_control d-flex justify-content-center" data-bs-theme="dark">
   <form method="POST">
     {% csrf_token %} {{ form.as_p}}
-    <button>Add Pokemon</button>
+    <button>Update Pokemon</button>
+    
   </form>
 </div>
 

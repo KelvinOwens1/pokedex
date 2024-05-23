@@ -14,7 +14,9 @@ urlpatterns = [
     path('profile/', profile_page, name="profile"), 
     path("pokemon/", PokemonList.as_view(), name="pokemon"),
     path("pokemon_profile/<int:pk>", PokemonProfile.as_view(), name="pokemon_profile"),
-    path("add_pokemon", AddPokemon.as_view(), name="add_pokemon"),
+    path("pokemon/add_pokemon", AddPokemon.as_view(), name="add_pokemon"),
+    path("pokemon/update_pokemon/<int:pk>", UpdatePokemon.as_view(), name="update_pokemon"),
+    path("pokemon/delete_pokemon/<int:pk>", DeletePokemon.as_view(), name="delete_pokemon"),
     path('random-pokemon/', random_pokemon_view, name='random_pokemon'),
     
     path("account/", account_settings, name="account"),
