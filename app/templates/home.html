@@ -1,12 +1,13 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<br />
+{% extends "base.html" %} {% load static %}
+{% block title %}Pokedex - Home{% endblock title %} {% block content %}
+
 <div class="container-fluid d-flex justify-content-center">
   <div class="row w-25 p-3">
     <div class="col-md">
       <div class="card text-center bg-body-tertiary" data-bs-theme="dark">
         <h5 class="card-title">Total Trainers</h5>
       </div>
-      <div class="card-body text-center">
+      <div class="card text-center bg-body-tertiary" data-bs-theme="dark">
         <h3 class="card-title">{{ total_trainers }}</h3>
       </div>
     </div>
@@ -17,22 +18,26 @@
       <div class="card text-center bg-body-tertiary" data-bs-theme="dark">
         <h5 class="card-title">Total Pokemon</h5>
       </div>
-      <div class="card-body text-center">
+      <div class="card text-center bg-body-tertiary" data-bs-theme="dark">
         <h3 class="card-title">{{ total_pokemon }}</h3>
       </div>
     </div>
   </div>
 </div>
+<hr class="border border-dark border-5 opacity-100">
 <br>
 
 <div class="text-center">
-<h1>This is the Home page.</h1>
+  <h1>This is the Home page.</h1>
 </div>
 
 <br />
 <div class="d-flex flex-column justify-content-center text-center ">
-<h2>Meet a pokemon:</h2>
-<a href="{% url 'random_pokemon' %}" class="btn btn-dark w-25">Go to a Random Pokémon</a>
+  <h2>Meet a pokemon:</h2>
+</div>
+
+<div class="d-flex justify-content-center text-center ">
+  <a href="{% url 'random_pokemon' %}" class="btn btn-dark w-25">Go to a Random Pokémon</a>
 </div>
 <br />
 
@@ -41,19 +46,20 @@
   <div>
   <h3 class="text-center">Available Trainers:</h3>
   </div>
-<br>
-  <div class="w-25">
-    <table class="table table-striped text-center"  data-bs-theme="dark">
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for i in trainers %}
-      <tr>
-        <td>{{ i.name }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
-
 </div>
+<br>
+
+<div class="d-flex justify-content-center">
+  <table class="table table-striped text-center"  data-bs-theme="dark">
+    <tr>
+      <th>Name</th>
+    </tr>
+    {% for i in trainers %}
+    <tr>
+      <td>{{ i.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
 {% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %}Register{% endblock title %}
+{% block content %}
+
+<h1 class="text-center">Register</h1>
+
+<div class="form-control d-flex justify-content-center" data-bs-theme="dark">
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p}}
+    <button>Register</button>
+  </form>
+</div>
+
+{% endblock content %}

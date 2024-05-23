@@ -1,16 +1,19 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}Pokemon List{% endblock title %} {% block content %}
 <div class="container-fluid d-flex flex-column text-center w-75">
 
   <br>
 
   <h1>This page shows all available Pokemon.</h1>
+  <div class="d-flex justify-content-center">
+  {% if user.is_authenticated %}
   <a href="{% url 'add_pokemon' %}" class="btn btn-dark w-25">Add Pokemon</a>
-  
+  {% endif %}
+  </div>
   <hr class="text-bg-light">
   
-  <div class="d-flex justify-content-center">
+  <div class="d-flex flex-wrap justify-content-center">
     {% for pokemon in object_list %}
-    <div class="card" data-bs-theme="dark" style="width: 18rem;">
+    <div class="card" data-bs-theme="dark" style="width: 20rem;">
       <a href="{% url 'pokemon_profile' pokemon.pk %}">
         <img src="{{pokemon.pokemon_pic.url}}" class="card-img-top" />
         <div class="card-body">

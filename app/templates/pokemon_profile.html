@@ -1,15 +1,18 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block title %} {{ pokemon.name }} profile {% endblock title %} {% block content %}
 
 <div class="container-fluid d-flex flex-column">
   <div class="text-center">
     <br />
     <h1>{{ pokemon.name }}</h1>
+
+    {% if user.is_authenticated %}
     <a href="{% url 'update_pokemon' pokemon.pk %}" class="btn btn-warning"
       >Edit Pokemon</a
     >
     <a href="{% url 'delete_pokemon' pokemon.pk %}" class="btn btn-warning"
       >Delete Pokemon</a
     >
+    {% endif %}
     <hr />
   </div>
 

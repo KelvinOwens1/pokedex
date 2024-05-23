@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% load static %} 
+{% block title %}Edit Profile{% endblock title %}
+{% block content %}
+
+<h1 class="text-center">Edit Profile</h1>
+
+<div class="form-control d-flex justify-content-center" data-bs-theme="dark">
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p}}
+    <button>Update Profile</button>
+  </form>
+</div>
+<a href="{% url 'change_password' %}" class="btn btn-dark">Change Password</a>
+
+{% endblock content %}
